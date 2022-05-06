@@ -1,5 +1,6 @@
 <template>
-    <div class="h-screen">
-        <slot></slot>
+    <div class="flex-grow flex">
+        <Directory />
+        <Form />
     </div>
 </template>

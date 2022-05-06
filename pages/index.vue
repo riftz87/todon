@@ -1,13 +1,12 @@
 <template>
-  <Workspace>
+  <App>
     <Appbar />
-  </Workspace>
+    <Workspace />
+  </App>
 </template>
 
 <script>
-import Appbar from "../components/Appbar.vue";
 export default {
-    name: "IndexPage",
-    components: { Appbar }
+    name: "IndexPage"
 }
 </script>
