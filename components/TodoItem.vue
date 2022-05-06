@@ -1,14 +1,14 @@
 <template>
-    <div class="my-2">
+    <div>
         <div v-if="item.edit" class="flex items-center">
             <InputText ref="field" type="text" v-model="item.text" class="flex-grow" @keypress="handleInput" />
-            <div class="px-1">
+            <div class="px-2">
                 <Button icon="pi pi-times" @click="handleCancelEdit" />
                 <Button icon="pi pi-check" @click="handleConfirmEdit" />
             </div>
         </div>
         <div v-else class="flex items-center">
-            <Button :icon="item.checked ? 'pi pi-check' : 'pi pi-circle'" :class="['p-button-sm p-button-rounded', item.checked ? 'p-button-success' : 'p-button-outlined']" @click="item.checked = !item.checked" />
+            <Button :icon="item.checked ? 'pi pi-check' : 'pi'" :class="['p-button-sm p-button-rounded', item.checked ? 'p-button-success' : 'p-button-outlined']" @click="item.checked = !item.checked" />
             <div class="flex-grow px-5 text-xl">{{ item.text }}</div>
             <Button icon="pi pi-trash" class="p-button-text p-button-danger" @click="handleRemove" />
             <Button icon="pi pi-pencil" class="p-button-text" @click="handleEdit" />
@@ -27,9 +27,12 @@ export default {
     },
     mounted() {
         const e = this;
-        const { $refs } = e;
+        const { $refs, item } = e;
         const { field } = $refs;
-        field.$el.focus();
+
+        if (item.edit) {
+            field.$el.focus();
+        }
     },
     methods: {
         handleEdit() {
