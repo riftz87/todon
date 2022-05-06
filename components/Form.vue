@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="text-right p-5">
-            <Button label="Discard" icon="pi pi-trash" class="p-button-text p-button-danger" />
+            <Button label="Discard" icon="pi pi-trash" class="p-button-text p-button-danger" @click="handleDiscard" />
             <Button label="Save" icon="pi pi-save" @click="handleSave" />
         </div>
     </div>
@@ -67,6 +67,11 @@ export default {
         handleRemoveTodoItem(index) {
             const e = this;
             e.item.items.splice(index, 1);
+        },
+        handleDiscard() {
+            const e = this;
+            const { item } = e;
+            e.$emit('discard', item);
         },
         handleSave() {
             const e = this;
